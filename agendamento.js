@@ -339,4 +339,30 @@ document.addEventListener('DOMContentLoaded', function () {
         // Open WhatsApp
         window.open(whatsappUrl, '_blank');
     });
+    // URL Parameter Parsing
+    const params = new URLSearchParams(window.location.search);
+    const barberParam = params.get('barbeiro');
+    const locationParam = params.get('barbearia');
+    const serviceParam = params.get('servico');
+
+    if (barberParam) {
+        const barberOption = document.querySelector(`#custom-barber-select .option[data-value="${barberParam}"]`);
+        if (barberOption) {
+            barberOption.click();
+        }
+    }
+
+    if (locationParam) {
+        const locationOption = document.querySelector(`#custom-location-select .option[data-value="${locationParam}"]`);
+        if (locationOption) {
+            locationOption.click();
+        }
+    }
+
+    if (serviceParam) {
+        const serviceOption = document.querySelector(`#custom-service-select .option[data-value="${serviceParam}"]`);
+        if (serviceOption) {
+            serviceOption.click();
+        }
+    }
 });
