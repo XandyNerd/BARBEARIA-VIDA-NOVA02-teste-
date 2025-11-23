@@ -438,76 +438,67 @@ document.addEventListener('DOMContentLoaded', () => {
 const reviewsCarousel = document.getElementById('reviewsCarousel');
 
 if (reviewsCarousel) {
-    // Rolagem arrastando (mouse)
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    let autoScrollInterval;
+    const scrollDelay = 3000; // Tempo entre cada troca (3 segundos)
 
-    reviewsCarousel.addEventListener('mousedown', (e) => {
-        isDown = true;
-        reviewsCarousel.classList.add('active');
-        startX = e.pageX - reviewsCarousel.offsetLeft;
-        scrollLeft = reviewsCarousel.scrollLeft;
-    });
-    reviewsCarousel.addEventListener('mouseleave', () => {
-        isDown = false;
-        reviewsCarousel.classList.remove('active');
-        startAutoScroll();
-    });
-    reviewsCarousel.addEventListener('mouseup', () => {
-        isDown = false;
-        reviewsCarousel.classList.remove('active');
-        startAutoScroll();
-    });
-    reviewsCarousel.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - reviewsCarousel.offsetLeft;
-        const walk = (x - startX) * 2;
-        reviewsCarousel.scrollLeft = scrollLeft - walk;
-    });
+    const getCardWidth = () => {
+        const card = reviewsCarousel.querySelector('.review-card');
+        if (!card) return 0;
+        const style = window.getComputedStyle(reviewsCarousel);
+        const gap = parseFloat(style.gap) || 0;
+        return card.offsetWidth + gap;
+    };
 
-    // Eventos de toque para celular
-    reviewsCarousel.addEventListener('touchstart', (e) => {
-        isDown = true;
-        startX = e.touches[0].pageX - reviewsCarousel.offsetLeft;
-        scrollLeft = reviewsCarousel.scrollLeft;
-        stopAutoScroll();
-    });
-    reviewsCarousel.addEventListener('touchend', () => {
-        isDown = false;
-        startAutoScroll();
-    });
-    reviewsCarousel.addEventListener('touchmove', (e) => {
-        if (!isDown) return;
-        const x = e.touches[0].pageX - reviewsCarousel.offsetLeft;
-        const walk = (x - startX) * 2;
-        reviewsCarousel.scrollLeft = scrollLeft - walk;
-    });
+    const scrollToNext = () => {
+        const cardWidth = getCardWidth();
+        if (cardWidth === 0) return;
 
-    // Rolagem automática
-    let autoScrollTimer;
-    const scrollStep = 1;
-    const scrollInterval = 30;
+        // Verifica se chegou ao final
+        if (reviewsCarousel.scrollLeft + reviewsCarousel.clientWidth >= reviewsCarousel.scrollWidth - 10) {
+            // Volta para o início suavemente
+            reviewsCarousel.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            // Vai para o próximo card
+            reviewsCarousel.scrollBy({
+                left: cardWidth,
+                behavior: 'smooth'
+            });
+        }
+    };
 
     const startAutoScroll = () => {
         stopAutoScroll();
-        autoScrollTimer = setInterval(() => {
-            if (!isDown) {
-                reviewsCarousel.scrollLeft += scrollStep;
-                if (reviewsCarousel.scrollLeft >= (reviewsCarousel.scrollWidth - reviewsCarousel.clientWidth)) {
-                    reviewsCarousel.scrollLeft = 0;
-                }
-            }
-        }, scrollInterval);
+        autoScrollInterval = setInterval(scrollToNext, scrollDelay);
     };
 
     const stopAutoScroll = () => {
-        clearInterval(autoScrollTimer);
+        clearInterval(autoScrollInterval);
     };
 
+    // Inicia a rotação automática
     startAutoScroll();
 
-    // Pausar ao passar o mouse
+    // Pausa a rotação quando o usuário interage
     reviewsCarousel.addEventListener('mouseenter', stopAutoScroll);
+    reviewsCarousel.addEventListener('touchstart', stopAutoScroll, { passive: true });
+
+    // Retoma a rotação quando o usuário para de interagir
+    reviewsCarousel.addEventListener('mouseleave', startAutoScroll);
+    reviewsCarousel.addEventListener('touchend', startAutoScroll);
+    
+    // Opcional: Pausar enquanto estiver fazendo scroll manual
+    let isScrolling;
+    reviewsCarousel.addEventListener('scroll', () => {
+        stopAutoScroll();
+        clearTimeout(isScrolling);
+        isScrolling = setTimeout(() => {
+            // Só retoma se não estiver com o mouse em cima (para desktop)
+            if (!reviewsCarousel.matches(':hover')) {
+                startAutoScroll();
+            }
+        }, 150);
+    }, { passive: true });
 }

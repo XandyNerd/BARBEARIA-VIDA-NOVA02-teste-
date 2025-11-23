@@ -171,12 +171,11 @@
     <!-- Footer -->
     <footer>
         <div class="container footer-content">
-            <div class="footer-logo">BARBEARIA VIDA NOVA</div>
             <div class="social-links">
+                <h3>LINKS RÁPIDOS</h3>
                 <a href="https://www.instagram.com/barbeariavidanova/"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.facebook.com/barbeariavidanova"><i class="fab fa-facebook"></i></a>
-                <!DOCTYPE html>
-                <html lang="pt-BR">
+                <a href="https://wa.me/5531971944816"><i class="fab fa-whatsapp"></i></a>
 
                 <head>
                     <meta charset="UTF-8">
@@ -221,185 +220,94 @@
                         </nav>
                     </header>
 
-                    <!-- Scheduling Form Section -->
-                    <section class="scheduling-page-section">
-                        <div class="scheduling-container">
-                            <h2>Agende seu <span class="highlight">Horário</span></h2>
 
-                            <form id="scheduling-form">
-                                <!-- Serviço (Custom Dropdown) -->
-                                <div class="form-group">
-                                    <label>Serviço</label>
-                                    <div class="custom-select" id="custom-service-select">
-                                        <div class="select-trigger">
-                                            <span id="select-trigger-text">Selecione o serviço</span>
-                                            <i class="fas fa-chevron-down"></i>
-                                        </div>
-                                        <div class="select-options">
-                                            <div class="optgroup-label">Cabelo</div>
-                                            <div class="option" data-value="Corte Masculino">Corte Masculino</div>
-                                            <div class="option" data-value="Corte + Barba">Corte + Barba</div>
-                                            <div class="option" data-value="Corte + Sobrancelha">Corte + Sobrancelha
-                                            </div>
-                                            <div class="option" data-value="Corte + Barba + Sobrancelha">Corte + Barba +
-                                                Sobrancelha
-                                            </div>
+            </div>
+            </section>
 
-                                            <div class="optgroup-label">Barba</div>
-                                            <div class="option" data-value="Barba">Barba</div>
-                                            <div class="option" data-value="Barba + Pezinho">Barba + Pezinho</div>
-
-                                            <div class="optgroup-label">Sobrancelha</div>
-                                            <div class="option" data-value="Design Sobrancelha">Design</div>
-
-                                            <div class="optgroup-label">Química</div>
-                                            <div class="option" data-value="Botox">Botox</div>
-                                            <div class="option" data-value="Progressiva">Progressiva</div>
-                                            <div class="option" data-value="Corte + Botox">Corte + Botox</div>
-                                            <div class="option" data-value="Corte + Progressiva">Corte + Progressiva
-                                            </div>
-
-                                            <div class="option" data-value="Outros">Outros (Especificar)</div>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="service">
-                                </div>
-
-                                <!-- Outros Serviços (Condicional) -->
-                                <div class="form-group hidden" id="other-service-container">
-                                    <label for="other-service">Qual serviço deseja?</label>
-                                    <input type="text" id="other-service" class="form-control"
-                                        placeholder="Digite o nome do serviço">
-                                </div>
-
-                                <!-- Barbeiro (Custom Dropdown) -->
-                                <div class="form-group">
-                                    <label>Barbeiro de preferência</label>
-                                    <div class="custom-select" id="custom-barber-select">
-                                        <div class="select-trigger">
-                                            <span id="barber-trigger-text">Selecione o barbeiro</span>
-                                            <i class="fas fa-chevron-down"></i>
-                                        </div>
-                                        <div class="select-options">
-                                            <div class="option" data-value="Gustavo">Gustavo (Master Barber)</div>
-                                            <div class="option" data-value="Uri">Uri</div>
-                                            <div class="option" data-value="Alexandre Silva">Alexandre Silva</div>
-                                            <div class="option" data-value="Qualquer barbeiro disponível">Qualquer
-                                                barbeiro disponível
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="barber">
-                                </div>
-
-                                <!-- Local (Custom Dropdown) -->
-                                <div class="form-group">
-                                    <label>Unidade</label>
-                                    <div class="custom-select" id="custom-location-select">
-                                        <div class="select-trigger">
-                                            <span id="location-trigger-text">Selecione a unidade</span>
-                                            <i class="fas fa-chevron-down"></i>
-                                        </div>
-                                        <div class="select-options">
-                                            <div class="option" data-value="Unidade Milionários">Unidade Milionários
-                                            </div>
-                                            <div class="option" data-value="Unidade Flávio Marques Lisboa">Unidade
-                                                Flávio Marques Lisboa
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="location">
-                                </div>
-
-                                <!-- Data -->
-                                <div class="form-group">
-                                    <label>Data</label>
-                                    <div class="calendar-wrapper">
-                                        <div class="calendar-header">
-                                            <button type="button" id="prev-month"><i
-                                                    class="fas fa-chevron-left"></i></button>
-                                            <span id="current-month"></span>
-                                            <button type="button" id="next-month"><i
-                                                    class="fas fa-chevron-right"></i></button>
-                                        </div>
-                                        <div class="calendar-grid" id="calendar-grid">
-                                            <!-- Days will be generated by JS -->
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="selected-date" required>
-                                </div>
-
-                                <!-- Horário -->
-                                <div class="form-group">
-                                    <label>Horário</label>
-                                    <div class="time-picker-wrapper">
-                                        <div class="time-picker-selection-bar"></div>
-                                        <ul class="time-picker-list" id="time-picker-list">
-                                            <!-- Times will be generated by JS -->
-                                        </ul>
-                                    </div>
-                                    <input type="hidden" id="selected-time" required>
-                                </div>
-
-                                <!-- Observações -->
-                                <div class="form-group">
-                                    <label for="observations">Observações (Opcional)</label>
-                                    <textarea id="observations" class="form-control"
-                                        placeholder="Alguma preferência especial?"></textarea>
-                                </div>
-
-                                <!-- Botão Enviar -->
-                                <button type="submit" class="btn-submit">
-                                    <i class="fab fa-whatsapp"></i> Enviar pelo WhatsApp
-                                </button>
-                            </form>
-                        </div>
-                    </section>
-
-                    <!-- Footer -->
-                    <footer>
-                        <div class="container footer-content">
-                            <div class="footer-logo">BARBEARIA VIDA NOVA</div>
-                            <div class="social-links">
-                                <a href="https://www.instagram.com/barbeariavidanova/"><i
-                                        class="fab fa-instagram"></i></a>
-                                <a href="https://www.facebook.com/barbeariavidanova"><i class="fab fa-facebook"></i></a>
-                                <a href="https://wa.me/553171944816"><i class="fab fa-whatsapp"></i></a>
-                            </div>
-                            <p>&copy; 2025 Barbearia Vida Nova. Todos os direitos reservados.</p>
-                        </div>
-                    </footer>
-
-                    <!-- Custom Alert Modal -->
-                    <div id="custom-alert" class="custom-alert-overlay hidden">
-                        <div class="custom-alert-box">
-                            <div class="alert-icon">
-                                <i class="fas fa-exclamation-circle"></i>
-                            </div>
-                            <p id="custom-alert-message">Mensagem aqui</p>
-                            <button id="custom-alert-ok" class="btn-alert">OK</button>
-                        </div>
+            <!-- Rodapé -->
+            <footer>
+                <div class="container footer-grid">
+                    <!-- Coluna 1: Marca -->
+                    <div class="footer-col brand-col">
+                        <div class="footer-logo">BARBEARIA VIDA NOVA</div>
+                        <p class="footer-tagline">Mais do que um corte, uma experiência de estilo e tradição.
+                        </p>
                     </div>
 
-                    <!-- Conflict Modal -->
-                    <div id="conflict-modal" class="custom-alert-overlay hidden">
-                        <div class="custom-alert-box">
-                            <div class="alert-icon">
-                                <i class="fas fa-exclamation-triangle" style="color: #f1c40f;"></i>
-                            </div>
-                            <p id="conflict-message">Esse barbeiro não corta nessa unidade. Deseja prosseguir mesmo
-                                assim?</p>
-                            <div class="conflict-buttons"
-                                style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
-                                <button id="conflict-yes" class="btn-alert"
-                                    style="background-color: transparent; border: 1px solid #d4af37; color: #d4af37;">Sim,
-                                    estou ciente</button>
-                                <button id="conflict-no" class="btn-alert">Não, quero trocar</button>
-                            </div>
-                        </div>
+                    <!-- Coluna 2: Contato -->
+                    <div class="footer-col contact-col">
+                        <ul class="contact-list">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank">
+                                    Rua Amílcar Cabral, 401 - Milionários<br>Belo Horizonte - MG
+                                </a>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <a href="https://maps.app.goo.gl/UVuQEN1YR12ZmDxP8" target="_blank">
+                                    R. Santa Claúdia, 357 - Flávio Marques Lisboa
+                                    <br>Belo Horizonte - MG
+                                </a>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone-alt"></i>
+                                <span>(31) 97194-4816</span>
+                            </li>
+                            <li>
+
+                                <!-- Horário de funcionamento roda pé-->
+                                <i class="fas fa-clock"></i>
+                                <span>Ter a Sáb: 08:00 - 20:00</span>
+                            </li>
+                        </ul>
                     </div>
 
-                    <script src="agendamento.js"></script>
-                </body>
+                    <!-- Coluna 3: Navegação -->
+                    <div class="footer-col nav-col">
 
-                </html>
+                        <ul class="footer-links">
+                            <div class="footer-bottom">
+                                <div class="container bottom-content">
+                                    <p>&copy; 2025 Barbearia Vida Nova. Todos os direitos reservados.</p>
+                                    <p class="developer-credit">
+                                        Desenvolvido por <a href="#" title="Portfólio em breve">Alexandre Silva
+                                            Ferreira</a>
+                                    </p>
+                                </div>
+                            </div>
+            </footer>
+
+            <!-- Custom Alert Modal -->
+            <div id="custom-alert" class="custom-alert-overlay hidden">
+                <div class="custom-alert-box">
+                    <div class="alert-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <p id="custom-alert-message">Mensagem aqui</p>
+                    <button id="custom-alert-ok" class="btn-alert">OK</button>
+                </div>
+            </div>
+
+            <!-- Conflict Modal -->
+            <div id="conflict-modal" class="custom-alert-overlay hidden">
+                <div class="custom-alert-box">
+                    <div class="alert-icon">
+                        <i class="fas fa-exclamation-triangle" style="color: #f1c40f;"></i>
+                    </div>
+                    <p id="conflict-message">Esse barbeiro não corta nessa unidade. Deseja prosseguir mesmo
+                        assim?</p>
+                    <div class="conflict-buttons"
+                        style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                        <button id="conflict-yes" class="btn-alert"
+                            style="background-color: transparent; border: 1px solid #d4af37; color: #d4af37;">Sim,
+                            estou ciente</button>
+                        <button id="conflict-no" class="btn-alert">Não, quero trocar</button>
+                    </div>
+                </div>
+            </div>
+
+            <script src="agendamento.js"></script>
+</body>
+
+</html>
