@@ -1679,6 +1679,7 @@ footer p {
     margin-bottom: 1.5rem;
     display: -webkit-box;
     -webkit-line-clamp: 4;
+    line-clamp: 4;
     /* Limit lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -2002,4 +2003,53 @@ footer p {
     opacity: 1;
     transform: translateY(0);
     padding-bottom: 1rem;
+}
+
+/* Footer Redesign */
+.main-footer {
+    background-color: var(--bg-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.developer-credit a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.developer-credit a:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2.5rem;
+    }
+
+    .contact-list li {
+        justify-content: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .bottom-content {
+        flex-direction: column;
+        text-align: center;
+    }
 }
