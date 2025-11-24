@@ -204,20 +204,6 @@ textarea.form-control {
 .option:hover {
     background-color: rgba(212, 175, 55, 0.1);
     /* Light gold bg */
-    color: var(--primary-color);
-    padding-left: 1.5rem;
-    /* Slide effect */
-}
-
-.option.selected {
-    background-color: var(--primary-color);
-    color: var(--bg-color);
-    font-weight: 700;
-}
-
-
-/* Calendar Styles */
-.calendar-wrapper {
     background-color: rgba(15, 15, 15, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;

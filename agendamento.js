@@ -262,7 +262,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Update Trigger Text and Hidden Input
                 const value = option.dataset.value;
-                const text = option.textContent;
+                let text = option.textContent;
+
+                // If the option has a specific service name element, use that for the trigger text
+                const serviceName = option.querySelector('.service-name');
+                if (serviceName) {
+                    text = serviceName.textContent;
+                }
 
                 triggerText.textContent = text;
                 hiddenInput.value = value;
