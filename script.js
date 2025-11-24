@@ -416,8 +416,21 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                             <span class="service-price">${item.price}</span>
                         </div>
-                    `}).join("");
+                    `}).join("") + `
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button id="modal-ok-btn" class="btn-hero" style="min-width: 120px;">OK</button>
+                        </div>
+                    `;
+                    
                     servicesModal.style.display = "block";
+
+                    // Add listener to the new button
+                    const okBtn = document.getElementById('modal-ok-btn');
+                    if (okBtn) {
+                        okBtn.addEventListener('click', () => {
+                            servicesModal.style.display = "none";
+                        });
+                    }
                 }
             });
         });
