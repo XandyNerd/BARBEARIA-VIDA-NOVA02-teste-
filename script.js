@@ -182,16 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
             hoverVideo.muted = true;
         });
 
-        // Clique abre o modal
-        videoContainer.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (videoModal && modalVideo) {
-                videoModal.style.display = 'flex';
-                modalVideo.src = hoverVideo.src;
-                modalVideo.muted = false;
-                modalVideo.play();
-            }
-        });
 
         // Suporte para toque no celular
         videoContainer.addEventListener('touchstart', (e) => {
