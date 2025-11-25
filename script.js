@@ -158,20 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hoverVideo.muted = false;
             hoverVideo.currentTime = 0;
 
-            var playPromise = hoverVideo.play();
-            if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    if (!isHovering) {
-                        hoverVideo.pause();
-                        hoverVideo.currentTime = 0;
-                        hoverVideo.muted = true;
-                        hoverVideo.style.opacity = '0';
-                    }
-                })
-                    .catch(error => {
-                        console.log("Auto-play foi impedido.", error);
-                    });
-            }
+ 
         });
 
         videoContainer.addEventListener('mouseleave', () => {
@@ -183,34 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-        // Suporte para toque no celular
-        videoContainer.addEventListener('touchstart', (e) => {
-            if (hoverVideo.style.opacity !== '1' || hoverVideo.paused) {
-                e.preventDefault();
-                hoverVideo.style.opacity = '1';
-                hoverVideo.muted = false;
-                hoverVideo.currentTime = 0;
-                hoverVideo.play();
-            }
-        });
+
     }
 
-    // Lógica de fechar o modal
-    if (closeModal && videoModal && modalVideo) {
-        closeModal.addEventListener('click', () => {
-            videoModal.style.display = 'none';
-            modalVideo.pause();
-            modalVideo.currentTime = 0;
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === videoModal) {
-                videoModal.style.display = 'none';
-                modalVideo.pause();
-                modalVideo.currentTime = 0;
-            }
-        });
-    }
+ 
 
     // Lógica do Carrossel de Vídeos
     const track = document.querySelector('.carousel-track');
