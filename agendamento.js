@@ -158,10 +158,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const selectedTimeInput = document.getElementById('selected-time');
     const timeSlots = [];
 
-    // Generate time slots (08:00 to 20:00, every 50 mins)
-    const startHour = 8;
-    const endHour = 20;
-    const intervalMinutes = 50;
+    // Gerar intervalos de tempo (das 8:00 às 20:00, a cada 50 minutos) Parte onde dito o horario de funcionamento!
+    const startHour = 9;
+    const endHour = 19;
+    const intervalMinutes = 35;
 
     let currentMinutes = startHour * 60;
     const endMinutes = endHour * 60;
